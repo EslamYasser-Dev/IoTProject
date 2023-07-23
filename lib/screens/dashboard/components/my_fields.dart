@@ -1,10 +1,9 @@
 import 'package:tanks/models/TotalSummaryModel.dart';
 import 'package:tanks/responsive.dart';
 import 'package:flutter/material.dart';
-
 import '../../../constants.dart';
 import '../../../repos/tankRepo.dart';
-import 'file_info_card.dart';
+import 'Tank_info_card.dart';
 
 // ignore: camel_case_types
 class My_Fields extends StatelessWidget {
@@ -12,7 +11,6 @@ class My_Fields extends StatelessWidget {
   late TankRepo tankRepo;
 
   My_Fields({super.key});
-
   @override
   Widget build(BuildContext context) {
     final Size _size = MediaQuery.of(context).size;

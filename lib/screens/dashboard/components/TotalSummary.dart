@@ -2,7 +2,7 @@ import 'package:tanks/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:tanks/models/TotalSummaryModel.dart';
 import '../../../constants.dart';
-import 'file_info_card.dart';
+import 'Tank_info_card.dart';
 
 class TotalSummary extends StatelessWidget {
   const TotalSummary({

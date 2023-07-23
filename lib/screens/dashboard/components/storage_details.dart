@@ -24,7 +24,7 @@ class StorageDetails extends StatelessWidget {
             "Total Storage",
             style: TextStyle(
               fontSize: 18,
-              fontWeight: FontWeight.w600,
+              fontWeight: FontWeight.w600,  
             ),
           ),
           SizedBox(height: defaultPadding),

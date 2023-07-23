@@ -4,7 +4,17 @@ import 'package:tanks/models/history.dart';
 import '../../../constants.dart';
 
 class HistoryArea extends StatelessWidget {
+
+
+
+  
   const HistoryArea({super.key});
+
+
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +39,6 @@ class HistoryArea extends StatelessWidget {
               columns: const [
                 DataColumn(
                   label: Text("Tank Label"),
-
                 ),
                 DataColumn(
                   label: Text("Date"),

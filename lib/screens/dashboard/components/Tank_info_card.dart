@@ -37,12 +37,12 @@ class RealTimeTankStat extends StatelessWidget {
               ),
               IconButton(
                 icon: const Icon(Icons.more_vert_outlined),
-                onPressed: () => {},//details
+                onPressed: () => {}, //details
               )
             ],
           ),
           Text(
-            info.tankLabel.toString(),//api
+            info.tankLabel.toString(), //api
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
@@ -84,16 +84,27 @@ class ProgressLine extends StatelessWidget {
 
   Color? color;
   final int? percentage;
+  
 
-//this controls bar color according to tank filling percentage
+//this controls bar color according to tank filling percentage to keep it from 15 ~ 75
   Color? statex(double percentage) {
     if (percentage > 78) {
-      color = const Color.fromARGB(247, 221, 15, 142);
-      
-    } elseif(perce) {
-      color = const Color.fromARGB(245, 46, 226, 85);
-    }
+      color = const Color.fromARGB(167, 238, 36, 160);
+        AlertDialog(title:const Text("Volume exceeds 78%"),
+       icon:const Icon(Icons.alarm), 
+       actions: <Widget>[
+            TextButton(
+              onPressed: () {},
+              child:const Text('Okey'),
+              )
+       ]
+       );
 
+    } else if (percentage < 15) {
+      color = const Color.fromARGB(247, 255, 255, 255);
+    } else {
+      color = const Color.fromARGB(247, 92, 245, 99);
+    }
     return color;
   }
 
