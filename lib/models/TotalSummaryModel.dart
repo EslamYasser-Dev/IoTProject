@@ -18,15 +18,15 @@ class TotalSummary {
 
 List summarys = [
   TotalSummary(
-      tankLabel: "Orange Oil B",
-      percentage: "35",
-      temperature: "55",
-      humdity: "55",
-      color: primaryColor),
-  TotalSummary(
     tankLabel: "Orange Oil B",
+    percentage: "35",
+    temperature: "35",
+    humdity: "48",
+    color: const Color.fromARGB(255, 250, 246, 15)),
+  TotalSummary(
+    tankLabel: "sidrawood Oil",
     percentage: "81",
-    temperature: "55",
+    temperature: "63",
     humdity: "55",
     color: const Color.fromARGB(255, 52, 201, 64),
   ),
@@ -35,13 +35,13 @@ List summarys = [
     percentage: "35",
     temperature: "15",
     humdity: "73",
-    color: const Color(0xFFA4CDFF),
+    color: const Color.fromARGB(255, 233, 77, 72),
   ),
   TotalSummary(
-    tankLabel: "UnConsoildated Butter",
-    percentage: "9",
-    temperature: "23",
-    humdity: "49",
+    tankLabel: "n/a",
+    percentage: "n/a",
+    temperature: "0",
+    humdity: "0",
     color: const Color(0xFF007EE5),
   ),
 ];

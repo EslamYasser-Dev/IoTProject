@@ -2,11 +2,11 @@
 class Tank {
   late int id, tankId;
   late String tankLabel,
-      tankCapacity,
-      tankPercentage,
-      tankTemperature,
-      tankHumdity,
-      timeOfReading;
+        tankCapacity,
+        tankPercentage,
+        tankTemperature,
+        tankHumdity,
+        timeOfReading;
 
   Tank.fromJson(Map<String, dynamic> json) {
     id = json["id"];

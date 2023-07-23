@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-
 import '../constants.dart';
 
 class MotWebServices {
@@ -8,7 +7,7 @@ class MotWebServices {
 
   MotWebServices() {
     BaseOptions options = BaseOptions(
-        baseUrl: baseURL,
+        baseUrl: baseURL, //MOT url ----> constants
         receiveDataWhenStatusError: true,
         connectTimeout:const Duration(seconds: 30),
         receiveTimeout:const Duration(seconds: 30),

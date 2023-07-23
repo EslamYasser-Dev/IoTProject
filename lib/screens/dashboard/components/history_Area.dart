@@ -3,19 +3,18 @@ import 'package:tanks/models/history.dart';
 
 import '../../../constants.dart';
 
-class HistoryArea extends StatelessWidget {
+class HistoryArea extends StatefulWidget {
 
 
 
   
   const HistoryArea({super.key});
 
+  @override
+  State<HistoryArea> createState() => _HistoryAreaState();
+}
 
-
-
-
-
-
+class _HistoryAreaState extends State<HistoryArea> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -46,9 +45,6 @@ class HistoryArea extends StatelessWidget {
                 DataColumn(
                   label: Text("percent"),
                 ),
-                // DataColumn(
-                //   label:Text("Temprature"),
-                // ),
               ],
               rows: List.generate(
                 historys.length,
