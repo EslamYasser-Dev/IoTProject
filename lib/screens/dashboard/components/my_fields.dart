@@ -41,12 +41,12 @@ class My_Fields extends StatelessWidget {
         ),
         const SizedBox(height: defaultPadding),
         Responsive(
-          mobile: FileInfoCardGridView(
+          mobile: TankInfoCardGridView(
             crossAxisCount: _size.width < 650 ? 2 : 4,
             childAspectRatio: _size.width < 650 && _size.width > 350 ? 1.3 : 1,
           ),
-          tablet:const FileInfoCardGridView(),
-          desktop: FileInfoCardGridView(
+          tablet:const TankInfoCardGridView(),
+          desktop: TankInfoCardGridView(
             childAspectRatio: _size.width < 1400 ? 1.1 : 1.4,
           ),
         ),
@@ -55,8 +55,8 @@ class My_Fields extends StatelessWidget {
   }
 }
 
-class FileInfoCardGridView extends StatelessWidget {
-  const FileInfoCardGridView({
+class TankInfoCardGridView extends StatelessWidget {
+  const TankInfoCardGridView({
     Key? key,
     this.crossAxisCount = 4,
     this.childAspectRatio = 1,
