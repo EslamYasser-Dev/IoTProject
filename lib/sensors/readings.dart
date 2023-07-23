@@ -30,26 +30,35 @@ class SensorMeasure {
   }
 
 
-  List<List> tankTemperature(){
-    List<String> temp=[];
+  Future<Map<String, double>> tankTemperature() async {
+    Map<String,double> readings = {};
+  
+
+  //شوف السينسور مودود ولا لا 
     final environmentSensors = EnvironmentSensors();   
-    var tempAvailable = await environmentSensors.getSensorAvailable(SensorType.AmbientTemperature);
-    var humidityAvailable = await environmentSensors.getSensorAvailable(SensorType.Humidity);
-    var pressureAvailable = await environmentSensors.getSensorAvailable(SensorType.Pressure);
-
-tempAvailable?
-  environmentSensors.temperature.listen((temperature) {
-      temp.add(temperature.toString());    
-  }) : print("error");
+    var tempAvailable =  environmentSensors.getSensorAvailable(SensorType.AmbientTemperature);
+    var humidityAvailable =  environmentSensors.getSensorAvailable(SensorType.Humidity);
+    var pressureAvailable =  environmentSensors.getSensorAvailable(SensorType.Pressure);
 
 
-  humidityAvailable?environmentSensors.temperature.listen((temperature) {
-      temp[1]=temperature.toString();    
-  }) : print("error");
+await tempAvailable?
+  environmentSensors.temperature.listen((temperature) {  //موجود نفذ الكود و خزن قيمتة داخل الماب
+      readings["temp"]=temperature.toDouble();
+  }): print("temprature sensor is broken or not in the kit");// طب مش موجود قول انو مش موجود 
+
+
+await humidityAvailable?
+  environmentSensors.humidity.listen((humidity) { //موجود نفذ الكود و خزن قيمتة داخل الماب
+      readings["humidity"]=humidity.toDouble();
+  }):print("Humidty sensor is broken or not in the kit");
+
+await pressureAvailable?
+ environmentSensors.pressure.listen((pressure) { //موجود نفذ الكود و خزن قيمتة داخل الماب
+      readings["pressure"]=pressure.toDouble();
+  }):print("pressure sensor is broken or not in the kit");
+
+ return readings;
   }
-
-
-
 
 
 
