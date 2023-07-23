@@ -73,14 +73,20 @@ class FileInfoCard extends StatelessWidget {
 }
 
 class ProgressLine extends StatelessWidget {
-  const ProgressLine({
+   ProgressLine({
     Key? key,
-    this.color = primaryColor,
+    required this.color ,
     required this.percentage,
   }) : super(key: key);
 
-  final Color? color;
+   Color? color;
   final int? percentage;
+
+Color? statex(double percentage){
+  if(percentage > 75){color=const Color.fromARGB(247, 221, 15, 142);}else{color = bgColor;}
+
+    return color;
+}
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +105,7 @@ class ProgressLine extends StatelessWidget {
             width: constraints.maxWidth * (percentage!.toDouble() / 100),
             height: 5,
             decoration: BoxDecoration(
-              color: color,
+              color: statex(percentage!.toDouble()),
               borderRadius: const BorderRadius.all(Radius.circular(10)),
             ),
           ),
