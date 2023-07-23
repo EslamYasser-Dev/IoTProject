@@ -73,7 +73,7 @@ class FileInfoCardGridView extends StatelessWidget {
         mainAxisSpacing: defaultPadding,
         childAspectRatio: childAspectRatio,
       ),
-      itemBuilder: (context, index) => FileInfoCard(info: summarys[index]),
+      itemBuilder: (context, index) => RealTimeTankStat(info: summarys[index]),
     );
   }
 }

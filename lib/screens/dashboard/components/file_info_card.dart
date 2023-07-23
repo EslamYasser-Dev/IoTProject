@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
 
-class FileInfoCard extends StatelessWidget {
-  const FileInfoCard({
+class RealTimeTankStat extends StatelessWidget {
+  const RealTimeTankStat({
     Key? key,
     required this.info,
   }) : super(key: key);
@@ -17,7 +17,7 @@ class FileInfoCard extends StatelessWidget {
       padding: const EdgeInsets.all(defaultPadding),
       decoration: const BoxDecoration(
         color: secondaryColor,
-        borderRadius: BorderRadius.all(Radius.circular(10)),
+        borderRadius: BorderRadius.all(Radius.circular(15)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,15 +31,18 @@ class FileInfoCard extends StatelessWidget {
                 height: 40,
                 width: 40,
                 decoration: BoxDecoration(
-                  color: info.color!.withOpacity(0.1),
+                  color: info.color!.withOpacity(0.2),
                   borderRadius: const BorderRadius.all(Radius.circular(10)),
                 ),
               ),
-               IconButton(icon:const Icon(Icons.more_vert_outlined),onPressed: ()=>{},)
+              IconButton(
+                icon: const Icon(Icons.more_vert_outlined),
+                onPressed: () => {},//details
+              )
             ],
           ),
           Text(
-            info.tankLabel.toString(),
+            info.tankLabel.toString(),//api
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
@@ -51,14 +54,14 @@ class FileInfoCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "${info.temperature.toString()} Celcius",
+                "T C: ${info.temperature.toString()} ",
                 style: Theme.of(context)
                     .textTheme
                     .bodySmall!
                     .copyWith(color: Colors.white70),
               ),
               Text(
-                "${info.humdity.toString()}  %",
+                "${info.percentage.toString()}  %",
                 style: Theme.of(context)
                     .textTheme
                     .bodySmall!
@@ -73,20 +76,26 @@ class FileInfoCard extends StatelessWidget {
 }
 
 class ProgressLine extends StatelessWidget {
-   ProgressLine({
+  ProgressLine({
     Key? key,
-    required this.color ,
+    required this.color,
     required this.percentage,
   }) : super(key: key);
 
-   Color? color;
+  Color? color;
   final int? percentage;
 
-Color? statex(double percentage){
-  if(percentage > 75){color=const Color.fromARGB(247, 221, 15, 142);}else{color =const Color.fromARGB(245, 46, 226, 85);}
+//this controls bar color according to tank filling percentage
+  Color? statex(double percentage) {
+    if (percentage > 78) {
+      color = const Color.fromARGB(247, 221, 15, 142);
+      
+    } elseif(perce) {
+      color = const Color.fromARGB(245, 46, 226, 85);
+    }
 
     return color;
-}
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +111,8 @@ Color? statex(double percentage){
         ),
         LayoutBuilder(
           builder: (context, constraints) => Container(
-            width: constraints.maxWidth * (percentage!.toDouble() / 100), //el Bar
+            width:
+                constraints.maxWidth * (percentage!.toDouble() / 100), //el Bar
             height: 5,
             decoration: BoxDecoration(
               color: statex(percentage!.toDouble()),
