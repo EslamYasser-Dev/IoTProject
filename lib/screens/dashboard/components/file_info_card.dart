@@ -35,7 +35,7 @@ class FileInfoCard extends StatelessWidget {
                   borderRadius: const BorderRadius.all(Radius.circular(10)),
                 ),
               ),
-              const Icon(Icons.more_vert, color: Colors.white54)
+               IconButton(icon:const Icon(Icons.more_vert_outlined),onPressed: ()=>{},)
             ],
           ),
           Text(
@@ -83,7 +83,7 @@ class ProgressLine extends StatelessWidget {
   final int? percentage;
 
 Color? statex(double percentage){
-  if(percentage > 75){color=const Color.fromARGB(247, 221, 15, 142);}else{color = bgColor;}
+  if(percentage > 75){color=const Color.fromARGB(247, 221, 15, 142);}else{color =const Color.fromARGB(245, 46, 226, 85);}
 
     return color;
 }
@@ -102,7 +102,7 @@ Color? statex(double percentage){
         ),
         LayoutBuilder(
           builder: (context, constraints) => Container(
-            width: constraints.maxWidth * (percentage!.toDouble() / 100),
+            width: constraints.maxWidth * (percentage!.toDouble() / 100), //el Bar
             height: 5,
             decoration: BoxDecoration(
               color: statex(percentage!.toDouble()),

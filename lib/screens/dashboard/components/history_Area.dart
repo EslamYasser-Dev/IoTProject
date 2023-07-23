@@ -25,10 +25,11 @@ class HistoryArea extends StatelessWidget {
             width: double.infinity,
             child: DataTable(
               columnSpacing: defaultPadding,
-              // minWidth: 600,
+              //minWidth: 600,
               columns: const [
                 DataColumn(
                   label: Text("Tank Label"),
+
                 ),
                 DataColumn(
                   label: Text("Date"),
@@ -56,14 +57,18 @@ DataRow historyRow(History historys) {
   return DataRow(
     cells: [
       DataCell(
-        Row(
-          children: [
-            const Icon(Icons.public),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
-              child: Text(historys.title!), //api
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child:
+            Row(
+              children: [
+                const Icon(Icons.access_time_outlined),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
+                  child: Text(historys.title!), //api
+                ),
+              ],
             ),
-          ],
         ),
       ),
       DataCell(Text(historys.date!)), //api
