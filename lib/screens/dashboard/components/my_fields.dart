@@ -6,11 +6,18 @@ import '../../../repos/tankRepo.dart';
 import 'Tank_info_card.dart';
 
 // ignore: camel_case_types
-class My_Fields extends StatelessWidget {
+class My_Fields extends StatefulWidget {
 
-  late TankRepo tankRepo;
 
   My_Fields({super.key});
+
+  @override
+  State<My_Fields> createState() => _My_FieldsState();
+}
+
+class _My_FieldsState extends State<My_Fields> {
+  late TankRepo tankRepo;
+
   @override
   Widget build(BuildContext context) {
     final Size _size = MediaQuery.of(context).size;

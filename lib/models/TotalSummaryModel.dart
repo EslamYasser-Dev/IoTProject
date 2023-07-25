@@ -1,6 +1,5 @@
 // ignore_for_file: file_names
 
-import 'package:tanks/constants.dart';
 import 'package:flutter/material.dart';
 //this file is a placeholder
 
@@ -38,10 +37,32 @@ List summarys = [
     color: const Color.fromARGB(255, 233, 77, 72),
   ),
   TotalSummary(
-    tankLabel: "n/a",
-    percentage: "n/a",
-    temperature: "0",
-    humdity: "0",
-    color: const Color(0xFF007EE5),
+    tankLabel: "Argan Oil",
+    percentage: "35",
+    temperature: "15",
+    humdity: "73",
+    color: const Color.fromARGB(255, 233, 77, 72),
+  ),
+  
+  TotalSummary(
+    tankLabel: "Argan Oil",
+    percentage: "35",
+    temperature: "15",
+    humdity: "73",
+    color: const Color.fromARGB(255, 233, 77, 72),
+  ),
+  TotalSummary(
+    tankLabel: "Argan Oil",
+    percentage: "35",
+    temperature: "15",
+    humdity: "73",
+    color: const Color.fromARGB(255, 233, 77, 72),
+  ),
+  TotalSummary(
+    tankLabel: "Argan Oil",
+    percentage: "35",
+    temperature: "15",
+    humdity: "73",
+    color: const Color.fromARGB(255, 233, 77, 72),
   ),
 ];
