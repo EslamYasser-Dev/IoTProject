@@ -1,4 +1,4 @@
-// ignore: file_names
+
 class Tank {
   late String id, UserID,tankLabel,
         tankCapacity,
@@ -6,19 +6,21 @@ class Tank {
         tankTemperature,
         tankHumdity,
         tankPressure,
-        content,
+        contentLabel,
+        contentNotes,
         timeStamp;
 
   Tank.fromJson(Map<String, dynamic> json) {
     id = json["id"];
     UserID = json["UserID"];
     tankLabel = json["tankLabel"];
-    tankCapacity = json["tankCapacity"];
-    tankPercentage = json["tankPercentage"];
+    tankCapacity = json["tankCapacity"]; // fixed value
+    tankPercentage = json["tankPercentage"]; //ultraSonic Sensor readings
     tankTemperature = json["tankTemperature"];
     tankHumdity = json["tankHumdity"];
     tankPressure = json["tankPressure"];
-    content = json["content"];
+    contentLabel = json["contentLabel"];
+    contentNotes = json["contentNotes"];
     timeStamp = json["timeStamp"];
   }
 }
