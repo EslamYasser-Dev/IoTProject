@@ -1,21 +1,24 @@
 // ignore: file_names
 class Tank {
-  late int id, tankId;
-  late String tankLabel,
+  late String id, UserID,tankLabel,
         tankCapacity,
         tankPercentage,
         tankTemperature,
         tankHumdity,
-        timeOfReading;
+        tankPressure,
+        content,
+        timeStamp;
 
   Tank.fromJson(Map<String, dynamic> json) {
     id = json["id"];
-    tankId = json["tankId"];
+    UserID = json["UserID"];
     tankLabel = json["tankLabel"];
     tankCapacity = json["tankCapacity"];
     tankPercentage = json["tankPercentage"];
     tankTemperature = json["tankTemperature"];
     tankHumdity = json["tankHumdity"];
-    timeOfReading = json["timeOfReading"];
+    tankPressure = json["tankPressure"];
+    content = json["content"];
+    timeStamp = json["timeStamp"];
   }
 }

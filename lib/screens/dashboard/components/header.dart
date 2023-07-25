@@ -48,15 +48,16 @@ class ProfileCard extends StatelessWidget {
         vertical: defaultPadding / 2,
       ),
       decoration: BoxDecoration(
+        boxShadow: defualtShadow,
         color: secondaryColor,
-        borderRadius: const BorderRadius.all(Radius.circular(10)),
+        borderRadius: const BorderRadius.all(Radius.circular(12)),
         border: Border.all(color: Colors.white10),
       ),
       child: Row(
         children: [
           Image.asset(
             "assets/images/profile_pic.png", //API pic
-            height: 38,
+            height: 36,
           ),
           if (!Responsive.isMobile(context))
           const Padding(
@@ -78,27 +79,34 @@ class SearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      //API search
-      decoration: InputDecoration(
-        hintText: "Search",
-        fillColor: secondaryColor,
-        filled: true,
-        border: const OutlineInputBorder(
-          borderSide: BorderSide.none,
-          borderRadius:  BorderRadius.all(Radius.circular(10)),
-        ),
-        suffixIcon: InkWell(
-          onTap: () {},
-          child: Container(
-            padding:const EdgeInsets.all(defaultPadding * 0.75),
-            margin:const EdgeInsets.symmetric(horizontal: defaultPadding / 2),
-            decoration:const BoxDecoration(
-              color: primaryColor,
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-            ),
-            child: SvgPicture.asset("assets/icons/Search.svg"),
+    return Container(
+      decoration: BoxDecoration(boxShadow: defualtShadow),
+      child: TextField(
+        //API search
+        decoration: 
+        InputDecoration(
+          hintText: "Search",
+          fillColor: secondaryColor,
+          filled: true,
+          border: const OutlineInputBorder(
+            borderSide: BorderSide.none,
+            borderRadius:  BorderRadius.all(Radius.circular(12)),
           ),
+          
+          suffixIcon: InkWell(
+            onTap: () {},
+            child: Container(
+              padding:const EdgeInsets.all(defaultPadding * 0.75),
+              margin:const EdgeInsets.symmetric(horizontal: defaultPadding / 2),
+              decoration:const BoxDecoration(
+                color: primaryColor,
+                borderRadius: BorderRadius.all(Radius.circular(12)),
+                boxShadow: defualtShadow,
+              ),
+              child: SvgPicture.asset("assets/icons/Search.svg"),
+            ),
+          ),
+    
         ),
       ),
     );

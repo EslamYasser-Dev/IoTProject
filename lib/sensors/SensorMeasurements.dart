@@ -86,11 +86,8 @@ class SensorMeasurements {
             //موجود نفذ الكود و خزن قيمتة داخل الماب
             readings["pressure"] = pressure.toDouble();
             pressure.toDouble() > 3.5
-                ? print("Coution pressure is higher than 3.5 Bar\n")
-                : print("pressure OK \n");
-          })
-        : print(
-            "pressure sensor is broken or not in the kit\n"); // طب مش موجود قول انو مش موجود
+                ? print("Coution pressure is higher than 3.5 Bar\n"): print("pressure OK \n");
+          }): print("pressure sensor is broken or not in the kit\n"); // طب مش موجود قول انو مش موجود
 
     return readings;
   }

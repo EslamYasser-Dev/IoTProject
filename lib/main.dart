@@ -25,10 +25,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Industrial Tanks Summary',
-      theme: ThemeData.dark().copyWith(
+      theme: ThemeData.light().copyWith(
         scaffoldBackgroundColor: bgColor,
         textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)
-            .apply(bodyColor: Colors.white),
+            .apply(bodyColor: Color.fromARGB(255, 0, 0, 0)),
         canvasColor: secondaryColor,
       ),
       home: MultiProvider(
