@@ -15,13 +15,14 @@ class TotalSummary {
       this.color});
 }
 
+
 List summarys = [
   TotalSummary(
     tankLabel: "Orange Oil B",
     percentage: "35",
     temperature: "35",
     humdity: "48",
-    color: const Color.fromARGB(255, 250, 246, 15)),
+    color: Color.fromARGB(255, 26, 25, 7)),
   TotalSummary(
     tankLabel: "sidrawood Oil",
     percentage: "81",
@@ -36,33 +37,5 @@ List summarys = [
     humdity: "73",
     color: const Color.fromARGB(255, 233, 77, 72),
   ),
-  TotalSummary(
-    tankLabel: "Argan Oil",
-    percentage: "35",
-    temperature: "15",
-    humdity: "73",
-    color: const Color.fromARGB(255, 233, 77, 72),
-  ),
-  
-  TotalSummary(
-    tankLabel: "Argan Oil",
-    percentage: "35",
-    temperature: "15",
-    humdity: "73",
-    color: const Color.fromARGB(255, 233, 77, 72),
-  ),
-  TotalSummary(
-    tankLabel: "Argan Oil",
-    percentage: "35",
-    temperature: "15",
-    humdity: "73",
-    color: const Color.fromARGB(255, 233, 77, 72),
-  ),
-  TotalSummary(
-    tankLabel: "Argan Oil",
-    percentage: "35",
-    temperature: "15",
-    humdity: "73",
-    color: const Color.fromARGB(255, 233, 77, 72),
-  ),
+
 ];

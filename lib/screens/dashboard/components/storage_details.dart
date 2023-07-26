@@ -14,6 +14,8 @@ class StorageDetails extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(defaultPadding),
       decoration: const BoxDecoration(
+                boxShadow: defualtShadow,
+
         color: secondaryColor,
         borderRadius: BorderRadius.all(Radius.circular(10)),
       ),

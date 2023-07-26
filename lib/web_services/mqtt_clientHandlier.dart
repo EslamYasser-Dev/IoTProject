@@ -1,72 +1,103 @@
-import 'package:mqtt_client/mqtt_browser_client.dart';
+import 'dart:async';
+import 'dart:io';
 import 'package:mqtt_client/mqtt_client.dart';
 import 'package:mqtt_client/mqtt_server_client.dart';
 
+final client = MqttServerClient('broker-cn.emqx.io', '1883');
 
-
-void onConnected() {
-  print('Connected');
-}
-
-// unconnected
-void onDisconnected() {
-  print('Disconnected');
-}
-
-// subscribe to topic succeeded
-void onSubscribed(String topic) {
-  print('Subscribed topic: $topic');
-}
-
-// subscribe to topic failed
-void onSubscribeFail(String topic) {
-  print('Failed to subscribe $topic');
-}
-
-// unsubscribe succeeded
-void onUnsubscribed(String topic) {
-  print('Unsubscribed topic: $topic');
-}
-
-// PING response received
-void pong() {
-  print('Ping response client callback invoked');
-}
-
-Future<MqttServerClient> connect() async {
-  MqttBrowserClient client = MqttBrowserClient(
-    'broker.emqx.io', 'flutter_client', maxConnectionAttempts: 3);
-  client.logging(on: true);
-  client!.port = 8083;
-  client.onConnected = onConnected;
+Future<int> ff() async {
+  client.logging(on: false);
+  client.keepAlivePeriod = 60;
   client.onDisconnected = onDisconnected;
-  client.onUnsubscribed = onUnsubscribed;
+  client.onConnected = onConnected;
   client.onSubscribed = onSubscribed;
-  client.onSubscribeFail = onSubscribeFail;
   client.pongCallback = pong;
-​
-  final connMessage = MqttConnectMessage()
-      .authenticateAs('username', 'password')
-      .keepAliveFor(60)
-      .withWillTopic('willtopic')
-      .withWillMessage('Will message')
-      .startClean()
+
+  final connMess = MqttConnectMessage()
+      .withClientIdentifier('dart_client')
+      .withWillTopic('willtopic') 
+      .withWillMessage('My Will message')
+      .startClean() 
       .withWillQos(MqttQos.atLeastOnce);
-  client.connectionMessage = connMessage;
+  print('Client connecting....');
+  client.connectionMessage = connMess;
+
   try {
     await client.connect();
-  } catch (e) {
-    print('Exception: $e');
+  } on NoConnectionException catch (e) {
+    print('Client exception: $e');
+    client.disconnect();
+  } on SocketException catch (e) {
+    print('Socket exception: $e');
     client.disconnect();
   }
-​
-  client.updates.listen((List<MqttReceivedMessage<MqttMessage>> c) {
-    final MqttPublishMessage message = c[0].payload;
-    final payload =
-    MqttPublishPayload.bytesToStringAsString(message.payload.message);
-​
-    print('Received message:$payload from topic: ${c[0].topic}>');
+
+  if (client.connectionStatus!.state == MqttConnectionState.connected) {
+    print('Client connected');
+  } else {
+    print('Client connection failed - disconnecting, status is ${client.connectionStatus}');
+    client.disconnect();
+    exit(-1);
+  }
+
+  const subTopic = 'topic/sub_test';
+  print('Subscribing to the $subTopic topic');
+  client.subscribe(subTopic, MqttQos.atMostOnce);
+  client.updates!.listen((List<MqttReceivedMessage<MqttMessage?>>? c) {
+    final recMess = c![0].payload as MqttPublishMessage;
+    final pt = MqttPublishPayload.bytesToStringAsString(recMess.payload.message);
+    print('Received message: topic is ${c[0].topic}, payload is $pt');
   });
-​
-  return client;
+
+  client.published!.listen((MqttPublishMessage message) {
+    print('Published topic: topic is ${message.variableHeader!.topicName}, with Qos ${message.header!.qos}');
+  });
+
+  const pubTopic = 'topic/pub_test';
+  final builder = MqttClientPayloadBuilder();
+  builder.addString('Hello from mqtt_client');
+
+  print('Subscribing to the $pubTopic topic');
+  client.subscribe(pubTopic, MqttQos.exactlyOnce);
+
+  print('Publishing our topic');
+  client.publishMessage(pubTopic, MqttQos.exactlyOnce, builder.payload!);
+
+  print('Sleeping....');
+  await MqttUtilities.asyncSleep(80);
+
+  print('Unsubscribing');
+  client.unsubscribe(subTopic);
+  client.unsubscribe(pubTopic);
+
+  await MqttUtilities.asyncSleep(2);
+  print('Disconnecting');
+  client.disconnect();
+
+  return 0;
+}
+
+/// The subscribed callback
+void onSubscribed(String topic) {
+  print('Subscription confirmed for topic $topic');
+}
+
+/// The unsolicited disconnect callback
+void onDisconnected() {
+  print('OnDisconnected client callback - Client disconnection');
+  if (client.connectionStatus!.disconnectionOrigin ==
+      MqttDisconnectionOrigin.solicited) {
+    print('OnDisconnected callback is solicited, this is correct');
+  }
+  exit(-1);
+}
+
+/// The successful connect callback
+void onConnected() {
+  print('OnConnected client callback - Client connection was sucessful');
+}
+
+/// Pong callback
+void pong() {
+  print('Ping response client callback invoked');
 }

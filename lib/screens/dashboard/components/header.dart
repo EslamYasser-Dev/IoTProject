@@ -3,6 +3,8 @@ import 'package:tanks/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import 'dart:ui' as ui;
+
 
 import '../../../constants.dart';
 
@@ -79,6 +81,7 @@ class SearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool val = true;
     return Container(
       decoration: BoxDecoration(boxShadow: defualtShadow),
       child: TextField(
@@ -94,6 +97,7 @@ class SearchField extends StatelessWidget {
           ),
           
           suffixIcon: InkWell(
+            onHover:(val){},
             onTap: () {},
             child: Container(
               padding:const EdgeInsets.all(defaultPadding * 0.75),

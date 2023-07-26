@@ -4,10 +4,6 @@ import 'package:tanks/models/history.dart';
 import '../../../constants.dart';
 
 class HistoryArea extends StatefulWidget {
-
-
-
-  
   const HistoryArea({super.key});
 
   @override
@@ -18,8 +14,11 @@ class _HistoryAreaState extends State<HistoryArea> {
   @override
   Widget build(BuildContext context) {
     return Container(
+  
       padding: const EdgeInsets.all(defaultPadding),
       decoration: const BoxDecoration(
+        
+        boxShadow: defualtShadow,
         color: secondaryColor,
         borderRadius: BorderRadius.all(Radius.circular(10)),
       ),
@@ -64,16 +63,15 @@ DataRow historyRow(History historys) {
       DataCell(
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child:
-            Row(
-              children: [
-                const Icon(Icons.access_time_outlined),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
-                  child: Text(historys.title!), //api
-                ),
-              ],
-            ),
+          child: Row(
+            children: [
+              const Icon(Icons.access_time_outlined),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
+                child: Text(historys.title!), //api
+              ),
+            ],
+          ),
         ),
       ),
       DataCell(Text(historys.date!)), //api
