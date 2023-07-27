@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:mqtt_client/mqtt_client.dart';
 import 'package:mqtt_client/mqtt_server_client.dart';
 
-final client = MqttServerClient('broker-cn.emqx.io', '1883');
+final client = MqttServerClient('broker.emqxd.io', '1883'); 
 
 Future<int> ff() async {
   client.logging(on: false);
@@ -15,16 +15,16 @@ Future<int> ff() async {
 
   final connMess = MqttConnectMessage()
       .withClientIdentifier('dart_client')
-      .withWillTopic('willtopic') 
+      .withWillTopic('willtopic')
       .withWillMessage('My Will message')
-      .startClean() 
+      .startClean()
       .withWillQos(MqttQos.atLeastOnce);
   print('Client connecting....');
   client.connectionMessage = connMess;
 
   try {
     await client.connect();
-  } on NoConnectionException catch (e) {
+  } on NoConnectionException catch (e)   {
     print('Client exception: $e');
     client.disconnect();
   } on SocketException catch (e) {
@@ -35,7 +35,8 @@ Future<int> ff() async {
   if (client.connectionStatus!.state == MqttConnectionState.connected) {
     print('Client connected');
   } else {
-    print('Client connection failed - disconnecting, status is ${client.connectionStatus}');
+    print(
+        'Client connection failed - disconnecting, status is ${client.connectionStatus}');
     client.disconnect();
     exit(-1);
   }
@@ -45,12 +46,14 @@ Future<int> ff() async {
   client.subscribe(subTopic, MqttQos.atMostOnce);
   client.updates!.listen((List<MqttReceivedMessage<MqttMessage?>>? c) {
     final recMess = c![0].payload as MqttPublishMessage;
-    final pt = MqttPublishPayload.bytesToStringAsString(recMess.payload.message);
+    final pt =
+        MqttPublishPayload.bytesToStringAsString(recMess.payload.message);
     print('Received message: topic is ${c[0].topic}, payload is $pt');
   });
 
   client.published!.listen((MqttPublishMessage message) {
-    print('Published topic: topic is ${message.variableHeader!.topicName}, with Qos ${message.header!.qos}');
+    print(
+        'Published topic: topic is ${message.variableHeader!.topicName}, with Qos ${message.header!.qos}');
   });
 
   const pubTopic = 'topic/pub_test';
