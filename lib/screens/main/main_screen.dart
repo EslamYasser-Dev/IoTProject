@@ -1,13 +1,31 @@
 import 'package:tanks/controllers/MenuAppController.dart';
+// import 'package:tanks/cubit/tank_cubit.dart';
 import 'package:tanks/responsive.dart';
 import 'package:tanks/screens/dashboard/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import '../../models/TanksData_Model.dart';
 import 'components/side_menu.dart';
 
-class MainScreen extends StatelessWidget {
-  const MainScreen({super.key});
+class MainScreen extends StatefulWidget {
+
+const MainScreen({super.key});
+
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+
+
+late List<Tank> allTanks;
+
+
+// @override
+// void initState(){
+//   super.initState();
+//   allTanks = Provider.of<TankCubit>(context).getAllTanksFromMot();
+// }
 
   @override
   Widget build(BuildContext context) {

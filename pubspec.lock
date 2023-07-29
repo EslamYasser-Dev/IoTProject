@@ -133,10 +133,10 @@ packages:
     dependency: "direct main"
     description:
       name: environment_sensors
-      sha256: "814c78232a2043762cb015bebd90b51cb95a37e6c636a91189f9193eabbddf78"
+      sha256: "1cae1bd9eb3e832092b5816fab81bf98e0dc51f20c88ef7e849929cc6ec9c5eb"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.2.0"
+    version: "0.3.0"
   equatable:
     dependency: transitive
     description:
@@ -352,6 +352,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "10.0.0"
+  ndialog:
+    dependency: "direct main"
+    description:
+      name: ndialog
+      sha256: "3c667b19e5eb5abaa1fa7fb8e9514aa46703a987e3536b83c8cb0adee9334cad"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "4.3.1"
   nested:
     dependency: transitive
     description:
@@ -452,10 +460,10 @@ packages:
     dependency: transitive
     description:
       name: plugin_platform_interface
-      sha256: "6a2128648c854906c53fa8e33986fc0247a1116122f9534dd20e3ab9e16a32bc"
+      sha256: "43798d895c929056255600343db8f049921cbec94d31ec87f1dc5c16c01935dd"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.1.4"
+    version: "2.1.5"
   pointycastle:
     dependency: transitive
     description:
@@ -557,6 +565,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.3.2"
+  universal_io:
+    dependency: transitive
+    description:
+      name: universal_io
+      sha256: "1722b2dcc462b4b2f3ee7d188dad008b6eb4c40bbd03a3de451d82c78bba9aad"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.2.2"
   vector_graphics:
     dependency: transitive
     description:
@@ -593,10 +609,10 @@ packages:
     dependency: transitive
     description:
       name: win32
-      sha256: dfdf0136e0aa7a1b474ea133e67cb0154a0acd2599c4f3ada3b49d38d38793ee
+      sha256: f2add6fa510d3ae152903412227bda57d0d5a8da61d2c39c1fb022c9429a41c0
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "5.0.5"
+    version: "5.0.6"
   xdg_directories:
     dependency: transitive
     description:

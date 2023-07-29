@@ -27,7 +27,7 @@ class _My_FieldsState extends State<My_Fields> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "Tank Real-Time Stats",
+              "Tanks Real time Stats",
               style: Theme.of(context).textTheme.titleMedium,
             ),
             ElevatedButton.icon(

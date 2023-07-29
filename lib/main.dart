@@ -1,6 +1,7 @@
 import 'package:tanks/constants.dart';
 import 'package:tanks/controllers/MenuAppController.dart';
 import 'package:tanks/repos/tankRepo.dart';
+import 'package:tanks/screens/main/login.dart';
 import 'package:tanks/screens/main/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,6 +17,7 @@ void main() {
 class MyApp extends StatelessWidget {
   late TankCubit tankCubit;
   late TankRepo tankRepo;
+ 
 
   MyApp({super.key});
 
@@ -23,12 +25,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute:"Login_Screen",
+      routes: {'login_screen': (context) => LoginScreen(),
+                'main_screen': (context) => MainScreen(),
+      },
       debugShowCheckedModeBanner: false,
       title: 'Industrial Tanks Summary',
       theme: ThemeData.light().copyWith(
-        scaffoldBackgroundColor: bgColor,
         textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)
-            .apply(bodyColor: Color.fromARGB(255, 0, 0, 0)),
+            .apply(bodyColor: Color.fromARGB(255, 0, 0, 0),),
         canvasColor: secondaryColor,
       ),
       home: MultiProvider(
@@ -37,7 +42,7 @@ class MyApp extends StatelessWidget {
             create: (context) => MenuAppController(),
           ),
         ],
-        child: MainScreen(),
+        child:LoginScreen(), //MainScreen(),
       ),
     );
   }

@@ -3,9 +3,12 @@ import 'dart:io';
 import 'package:mqtt_client/mqtt_client.dart';
 import 'package:mqtt_client/mqtt_server_client.dart';
 
-final client = MqttServerClient('broker.emqxd.io', '1883'); 
+import '../constants.dart';
 
-Future<int> ff() async {
+class MqttGetData{
+final client = MqttServerClient(mqttServ,mqttSoc); 
+
+Future<int> getTanksData() async {
   client.logging(on: false);
   client.keepAlivePeriod = 60;
   client.onDisconnected = onDisconnected;
@@ -14,9 +17,9 @@ Future<int> ff() async {
   client.pongCallback = pong;
 
   final connMess = MqttConnectMessage()
-      .withClientIdentifier('dart_client')
-      .withWillTopic('willtopic')
-      .withWillMessage('My Will message')
+      .withClientIdentifier('Tanks Mobile App')
+      .withWillTopic('Get sensor Data')
+      .withWillMessage('Waiting')
       .startClean()
       .withWillQos(MqttQos.atLeastOnce);
   print('Client connecting....');
@@ -103,4 +106,5 @@ void onConnected() {
 /// Pong callback
 void pong() {
   print('Ping response client callback invoked');
+}
 }

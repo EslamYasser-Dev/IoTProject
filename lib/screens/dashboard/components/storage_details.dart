@@ -5,9 +5,7 @@ import 'chart.dart';
 import 'storage_info_card.dart';
 
 class StorageDetails extends StatelessWidget {
-  const StorageDetails({
-    Key? key,
-  }) : super(key: key);
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -32,25 +30,25 @@ class StorageDetails extends StatelessWidget {
           SizedBox(height: defaultPadding),
           Chart(),
           StorageInfoCard(
-            svgSrc: "assets/icons/Documents.svg",
+            svgSrc: "",
             title: "Milk Tank", //api
             amountOfFiles: "85 Litre", //api
             numOfFiles: 1328,
           ),
           StorageInfoCard(
-            svgSrc: "assets/icons/media.svg",
+            svgSrc: "",
             title: "Media Files",
             amountOfFiles: "15.3GB",
             numOfFiles: 1328,
           ),
           StorageInfoCard(
-            svgSrc: "assets/icons/folder.svg",
+            svgSrc: "",
             title: "Other Files",
             amountOfFiles: "1.3GB",
             numOfFiles: 1328,
           ),
           StorageInfoCard(
-            svgSrc: "assets/icons/unknown.svg",
+            svgSrc: "",
             title: "Unknown",
             amountOfFiles: "1.3GB",
             numOfFiles: 140,

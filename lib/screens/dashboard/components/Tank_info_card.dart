@@ -1,8 +1,9 @@
 import 'package:tanks/models/TotalSummaryModel.dart';
 import 'package:flutter/material.dart';
+import 'package:tanks/web_services/mqtt_clientHandlier.dart';
 import '../../../constants.dart';
 
-class RealTimeTankStat extends StatelessWidget {
+class RealTimeTankStat extends StatefulWidget {
   const RealTimeTankStat({
     Key? key,
     required this.info,
@@ -10,13 +11,19 @@ class RealTimeTankStat extends StatelessWidget {
 
   final TotalSummary info;
 
+  initState() {
+    MqttGetData();
+  }
+  State<RealTimeTankStat> createState() => _RealTimeTankStatState();
+}
 
-
+class _RealTimeTankStatState extends State<RealTimeTankStat> {
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(defaultPadding),
-      decoration: const BoxDecoration(
+      decoration:  BoxDecoration(
+        gradient: gradient,
         boxShadow: defualtShadow,
         color: secondaryColor,
         borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -33,7 +40,7 @@ class RealTimeTankStat extends StatelessWidget {
                 height: 40,
                 width: 40,
                 decoration: BoxDecoration(
-                  color: info.color!.withOpacity(0.2),
+                  color: widget.info.color!.withOpacity(0.2),
                   borderRadius: const BorderRadius.all(Radius.circular(10)),
                 ),
               ),
@@ -44,30 +51,30 @@ class RealTimeTankStat extends StatelessWidget {
             ],
           ),
           Text(
-            info.tankLabel.toString(), //api
+            widget.info.tankLabel.toString(), //api
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
           ProgressLine(
-            color: info.color,
-            percentage: int.parse(info.percentage.toString()),
+            color: widget.info.color,
+            percentage: int.parse(widget.info.percentage.toString()),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "T C: ${info.temperature.toString()} ",
+                "${widget.info.temperature.toString()} C",
                 style: Theme.of(context)
                     .textTheme
-                    .bodySmall!
-                    .copyWith(color: const Color.fromARGB(179, 255, 255, 255)),
+                    .bodyMedium!
+                    .copyWith(color: Color.fromARGB(255, 0, 0, 0)),
               ),
               Text(
-                "${info.percentage.toString()}  %",
+                "${widget.info.percentage.toString()}  %",
                 style: Theme.of(context)
                     .textTheme
-                    .bodySmall!
-                    .copyWith(color: Colors.white),
+                    .bodyMedium!
+                    .copyWith(color: const Color.fromARGB(255, 0, 0, 0)),
               ),
             ],
           )
@@ -76,7 +83,6 @@ class RealTimeTankStat extends StatelessWidget {
     );
   }
 }
-
 class ProgressLine extends StatelessWidget {
   ProgressLine({
     Key? key,
@@ -91,9 +97,10 @@ class ProgressLine extends StatelessWidget {
 //this controls bar color according to tank filling percentage to keep it from 15 ~ 75
   Color? statex(double percentage) {
     if (percentage > 70) {
-      color = Color.fromARGB(255, 238, 36, 160);
+      color = Color.fromARGB(255, 255, 131, 148);
+      
     } else if (percentage < 20) {
-      color = const Color.fromARGB(247, 255, 255, 255);
+      color = Color.fromARGB(247, 255, 255, 255);
     } else {
       color = const Color.fromARGB(247, 92, 245, 99);
     }
@@ -116,10 +123,10 @@ class ProgressLine extends StatelessWidget {
           builder: (context, constraints) => Container(
             width:
                 constraints.maxWidth * (percentage!.toDouble() / 100), //el Bar
-            height: 5,
+            height: 8,
             decoration: BoxDecoration(
-              color: statex(percentage!.toDouble()),
               borderRadius: const BorderRadius.all(Radius.circular(10)),
+             color: statex(percentage!.toDouble()),
             ),
           ),
         ),

@@ -3,9 +3,6 @@ import 'package:tanks/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
-import 'dart:ui' as ui;
-
-
 import '../../../constants.dart';
 
 class Header extends StatelessWidget {
@@ -25,7 +22,9 @@ class Header extends StatelessWidget {
         if (!Responsive.isMobile(context))
           Text(
             "Tanks Mnangment",
-            style: Theme.of(context).textTheme.titleLarge,
+      
+            style: TextStyle(shadows: defualtShadow,fontSize: 30.0,fontWeight: FontWeight.bold
+           )
           ),
         if (!Responsive.isMobile(context))
           Spacer(flex: Responsive.isDesktop(context) ? 2 : 1),
@@ -56,11 +55,9 @@ class ProfileCard extends StatelessWidget {
         border: Border.all(color: Colors.white10),
       ),
       child: Row(
+        
         children: [
-          Image.asset(
-            "assets/images/profile_pic.png", //API pic
-            height: 36,
-          ),
+          Icon(Icons.verified_user,color: Colors.blueAccent,size: 36),
           if (!Responsive.isMobile(context))
           const Padding(
               padding:
@@ -102,8 +99,9 @@ class SearchField extends StatelessWidget {
             child: Container(
               padding:const EdgeInsets.all(defaultPadding * 0.75),
               margin:const EdgeInsets.symmetric(horizontal: defaultPadding / 2),
-              decoration:const BoxDecoration(
+              decoration: BoxDecoration(
                 color: primaryColor,
+                gradient:  bottonGradient,
                 borderRadius: BorderRadius.all(Radius.circular(12)),
                 boxShadow: defualtShadow,
               ),

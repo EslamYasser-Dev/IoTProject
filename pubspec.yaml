@@ -10,7 +10,7 @@ dependencies:
   all_sensors2: ^1.0.1
   bloc: ^8.1.2
   dio: ^5.3.0
-  environment_sensors: ^0.2.0
+  environment_sensors: ^0.3.0
   firebase_database: ^10.2.4
   fl_chart: ^0.63.0
   flutter:
@@ -21,6 +21,7 @@ dependencies:
   gradients: ^0.1.1+2
   meta: ^1.9.1
   mqtt_client: ^10.0.0
+  ndialog: ^4.3.1
   provider: ^6.0.5
   sensors_plus: ^3.0.2
 
@@ -54,3 +55,4 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/loginlogo.png

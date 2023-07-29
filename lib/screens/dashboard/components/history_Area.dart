@@ -16,9 +16,10 @@ class _HistoryAreaState extends State<HistoryArea> {
     return Container(
   
       padding: const EdgeInsets.all(defaultPadding),
-      decoration: const BoxDecoration(
+      decoration:  BoxDecoration(
         
         boxShadow: defualtShadow,
+        gradient: gradient,
         color: secondaryColor,
         borderRadius: BorderRadius.all(Radius.circular(10)),
       ),

@@ -9,3 +9,7 @@ class TankLoaded extends TankState{
   final List<Tank> tanks;
   TankLoaded(this.tanks);
 }
+
+class TankAlert extends TankState{
+  
+}
