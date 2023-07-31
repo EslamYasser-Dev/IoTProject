@@ -1,14 +1,16 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class MenuAppController extends ChangeNotifier {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  GlobalKey<ScaffoldState> get scaffoldKey => _scaffoldKey;
+class MenuAppController extends GetxController {
+  var scaffoldKey = GlobalKey<ScaffoldState>();
+
 
   void controlMenu() {
-    if (!_scaffoldKey.currentState!.isDrawerOpen) {
-      _scaffoldKey.currentState!.openDrawer();
+    if (!scaffoldKey.currentState!.isDrawerOpen) {
+      scaffoldKey.currentState!.openDrawer();
+      update();
     }
   }
 }

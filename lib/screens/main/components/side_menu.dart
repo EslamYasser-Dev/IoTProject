@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:tanks/screens/main/login.dart';
 
 import '../../../constants.dart';
+import '../../../controllers/MenuAppController.dart';
 
-class SideMenu extends StatelessWidget {
-  const SideMenu({
-    Key? key,
-  }) : super(key: key);
-
+class SideMenu extends  GetView<MenuAppController> {
+ 
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -34,7 +34,7 @@ class SideMenu extends StatelessWidget {
           DrawerListTile(
             title: "Logout",
             svgSrc: "assets/icons/menu_profile.svg",
-            press: () {},
+            press: () {Get.offAll(LoginScreen());},
           ),
         ],
       ),

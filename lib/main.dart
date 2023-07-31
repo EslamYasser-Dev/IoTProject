@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:tanks/constants.dart';
 import 'package:tanks/controllers/MenuAppController.dart';
 import 'package:tanks/repos/tankRepo.dart';
@@ -5,11 +6,11 @@ import 'package:tanks/screens/main/login.dart';
 import 'package:tanks/screens/main/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 import 'cubit/tank_cubit.dart';
 
 void main() {
+  // Get.put(MenuAppController());
   runApp(MyApp());
 }
 
@@ -17,33 +18,28 @@ void main() {
 class MyApp extends StatelessWidget {
   late TankCubit tankCubit;
   late TankRepo tankRepo;
- 
 
   MyApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      initialRoute:"Login_Screen",
-      routes: {'login_screen': (context) => LoginScreen(),
-                'main_screen': (context) => MainScreen(),
-      },
-      debugShowCheckedModeBanner: false,
-      title: 'Industrial Tanks Summary',
-      theme: ThemeData.light().copyWith(
-        textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)
-            .apply(bodyColor: Color.fromARGB(255, 0, 0, 0),),
-        canvasColor: secondaryColor,
-      ),
-      home: MultiProvider(
-        providers: [
-          ChangeNotifierProvider(
-            create: (context) => MenuAppController(),
+    return GetMaterialApp(
+        // key: MenuAppController.scaffoldKey,
+        initialRoute: "Login_Screen",
+        routes: {
+          'login': (context) => LoginScreen(),
+          'main': (context) => MainScreen(),
+        },
+        debugShowCheckedModeBanner: false,
+        title: 'Industrial Tanks Summary',
+        theme: ThemeData.light().copyWith(
+          textTheme:
+              GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme).apply(
+            bodyColor: Color.fromARGB(255, 0, 0, 0),
           ),
-        ],
-        child:LoginScreen(), //MainScreen(),
-      ),
-    );
+          canvasColor: secondaryColor,
+        ),
+        home: LoginScreen());
   }
 }

@@ -1,50 +1,55 @@
-import 'package:tanks/controllers/MenuAppController.dart';
+import 'package:get/get.dart';
 import 'package:tanks/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:provider/provider.dart';
+import 'package:tanks/screens/main/login.dart';
 import '../../../constants.dart';
+import '../../../controllers/MenuAppController.dart';
+
+import '../../../controllers/loginController.dart';
 
 class Header extends StatelessWidget {
+
   const Header({
     Key? key,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         if (!Responsive.isDesktop(context))
-          IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: context.read<MenuAppController>().controlMenu,
+          GetBuilder(
+            init: MenuAppController(),
+            builder: (controller) => IconButton(
+              icon: const Icon(Icons.menu),
+              onPressed: controller.controlMenu,
+            ),
           ),
         if (!Responsive.isMobile(context))
-          Text(
-            "Tanks Mnangment",
-      
-            style: TextStyle(shadows: defualtShadow,fontSize: 30.0,fontWeight: FontWeight.bold
-           )
-          ),
+          Text("Tanks Mnangment",
+              style: TextStyle(
+                  shadows: defualtShadow,
+                  fontSize: 30.0,
+                  fontWeight: FontWeight.bold)),
         if (!Responsive.isMobile(context))
           Spacer(flex: Responsive.isDesktop(context) ? 2 : 1),
-       const Expanded(child: SearchField()),
-      const ProfileCard()
+        Expanded(child: SearchField()),
+        ProfileCard()
       ],
     );
   }
 }
 
 class ProfileCard extends StatelessWidget {
-  const ProfileCard({
-    Key? key,
-  }) : super(key: key);
+  // const ProfileCard({
+  //   Key? key,
+  // }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(left: defaultPadding),
-      padding:const EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
         horizontal: defaultPadding,
         vertical: defaultPadding / 2,
       ),
@@ -55,16 +60,28 @@ class ProfileCard extends StatelessWidget {
         border: Border.all(color: Colors.white10),
       ),
       child: Row(
-        
         children: [
-          Icon(Icons.verified_user,color: Colors.blueAccent,size: 36),
-          if (!Responsive.isMobile(context))
-          const Padding(
-              padding:
-               EdgeInsets.symmetric(horizontal: defaultPadding / 2),
-              child: Text("Eslam"), //API name
-            ),
-         const Icon(Icons.keyboard_arrow_down), //user
+          if (!Responsive.isMobile(context)) Icon(Icons.security_sharp),
+          GetBuilder<loginController>(
+            init: loginController(),
+            builder: (controller) {
+              return Padding(
+                padding: EdgeInsets.symmetric(horizontal: defaultPadding / 2),
+                
+                child:const Text("LogOut"), //API name
+              );
+            },
+          ),
+          IconButton(
+              icon: Icon(
+                Icons.login_outlined,
+                size: 25,
+              ),
+              color: Colors.blueAccent,
+              onPressed: () {
+                loginController().isLoggedIN = false;
+                Get.offAll(LoginScreen());
+              }), //user
         ],
       ),
     );
@@ -72,43 +89,36 @@ class ProfileCard extends StatelessWidget {
 }
 
 class SearchField extends StatelessWidget {
-  const SearchField({
-    Key? key,
-  }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    bool val = true;
     return Container(
       decoration: BoxDecoration(boxShadow: defualtShadow),
       child: TextField(
         //API search
-        decoration: 
-        InputDecoration(
+        decoration: InputDecoration(
           hintText: "Search",
           fillColor: secondaryColor,
           filled: true,
           border: const OutlineInputBorder(
             borderSide: BorderSide.none,
-            borderRadius:  BorderRadius.all(Radius.circular(12)),
+            borderRadius: BorderRadius.all(Radius.circular(12)),
           ),
-          
           suffixIcon: InkWell(
-            onHover:(val){},
+            onHover: (val) {},
             onTap: () {},
             child: Container(
-              padding:const EdgeInsets.all(defaultPadding * 0.75),
-              margin:const EdgeInsets.symmetric(horizontal: defaultPadding / 2),
+              padding: const EdgeInsets.all(defaultPadding * 0.75),
+              margin:
+                  const EdgeInsets.symmetric(horizontal: defaultPadding / 2),
               decoration: BoxDecoration(
                 color: primaryColor,
-                gradient:  bottonGradient,
+                gradient: bottonGradient,
                 borderRadius: BorderRadius.all(Radius.circular(12)),
                 boxShadow: defualtShadow,
               ),
               child: SvgPicture.asset("assets/icons/Search.svg"),
             ),
           ),
-    
         ),
       ),
     );
