@@ -1,26 +1,54 @@
 
+//History
 class Tank {
-  late String id, UserID,tankLabel,
-        tankCapacity,
-        tankPercentage,
-        tankTemperature,
-        tankHumdity,
-        tankPressure,
-        contentLabel,
-        contentNotes,
-        timeStamp;
+  int? id;
+  String? timeStamp;
+  String? captureTime;
+  String? phoneVersion;
+  String? appVersion;
+  String? currentLuxValue;
+  String? liter;
+  String? prcentage;
+  String? temp;
+  String? press;
+
+  Tank(
+      {this.id,
+      this.timeStamp,
+      this.captureTime,
+      this.phoneVersion,
+      this.appVersion,
+      this.currentLuxValue,
+      this.liter,
+      this.prcentage,
+      this.temp,
+      this.press});
 
   Tank.fromJson(Map<String, dynamic> json) {
-    id = json["id"];
-    UserID = json["UserID"];
-    tankLabel = json["tankLabel"];
-    tankCapacity = json["tankCapacity"]; // fixed value
-    tankPercentage = json["tankPercentage"]; //ultraSonic Sensor readings
-    tankTemperature = json["tankTemperature"];
-    tankHumdity = json["tankHumdity"];
-    tankPressure = json["tankPressure"];
-    contentLabel = json["contentLabel"];
-    contentNotes = json["contentNotes"];
-    timeStamp = json["timeStamp"];
+    id = json['id'];
+    timeStamp = json['TimeStamp'];
+    captureTime = json['captureTime'];
+    phoneVersion = json['phoneVersion'];
+    appVersion = json['appVersion'];
+    currentLuxValue = json['currentLuxValue'];
+    liter = json['Liter'];
+    prcentage = json['prcentage'];
+    temp = json['Temp'];
+    press = json['Press'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['TimeStamp'] = this.timeStamp;
+    data['captureTime'] = this.captureTime;
+    data['phoneVersion'] = this.phoneVersion;
+    data['appVersion'] = this.appVersion;
+    data['currentLuxValue'] = this.currentLuxValue;
+    data['Liter'] = this.liter;
+    data['prcentage'] = this.prcentage;
+    data['Temp'] = this.temp;
+    data['Press'] = this.press;
+    return data;
   }
 }

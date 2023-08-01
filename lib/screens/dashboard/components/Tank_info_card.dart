@@ -96,13 +96,13 @@ class ProgressLine extends StatelessWidget {
 
 //this controls bar color according to tank filling percentage to keep it from 15 ~ 75
   Color? statex(double percentage) {
-    if (percentage > 70) {
-      color = Color.fromARGB(255, 255, 131, 148);
+    if (percentage > 80) {
+      color = Colors.redAccent;
       
     } else if (percentage < 20) {
-      color = Color.fromARGB(247, 255, 255, 255);
+      color = Colors.blueAccent;
     } else {
-      color = const Color.fromARGB(247, 92, 245, 99);
+      color = Colors.green;
     }
     return color;
   }

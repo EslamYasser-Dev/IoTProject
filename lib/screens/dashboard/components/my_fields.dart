@@ -4,18 +4,16 @@ import 'package:flutter/material.dart';
 import '../../../constants.dart';
 import '../../../repos/tankRepo.dart';
 import 'Tank_info_card.dart';
+import 'package:tanks/controllers/tanksController.dart';
 
 // ignore: camel_case_types
-class My_Fields extends StatefulWidget {
+class My_Fields extends StatelessWidget {
 
 
   My_Fields({super.key});
 
-  @override
-  State<My_Fields> createState() => _My_FieldsState();
-}
 
-class _My_FieldsState extends State<My_Fields> {
+
   late TankRepo tankRepo;
 
   @override
@@ -38,7 +36,7 @@ class _My_FieldsState extends State<My_Fields> {
                       defaultPadding / (Responsive.isMobile(context) ? 2 : 1),
                 ),
               ),
-              onPressed: () {},
+              onPressed: (){},
               icon: const Icon(Icons.refresh),
               label: const Text("Refresh"),
             ),

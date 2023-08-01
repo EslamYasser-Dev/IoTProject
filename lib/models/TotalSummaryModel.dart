@@ -1,8 +1,9 @@
 // ignore_for_file: file_names
 
+
 import 'package:flutter/material.dart';
 //this file is a placeholder
-
+// TotalSummary
 class TotalSummary {
   late String tankLabel, percentage, temperature, humdity;
   final Color? color;
@@ -14,7 +15,6 @@ class TotalSummary {
       required this.humdity,
       this.color});
 }
-
 
 List summarys = [
   TotalSummary(

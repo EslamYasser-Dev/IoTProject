@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gradients/gradients.dart';
-
 // Colors Constants
 const primaryColor = Color(0xFF2465EA);
 const secondaryColor = Color.fromARGB(218, 215, 215, 218);
@@ -26,9 +24,6 @@ LinearGradient bottonGradient = LinearGradient(
                 Color(0xFF60EFFF),
               ],
               );
-
-
-
 const defaultPadding = 13.0;
 const defualtShadow = [
   BoxShadow(
@@ -44,5 +39,8 @@ conditonalShadow(e) => {
 // connection constants
 const baseURL =
     "https://beta.masterofthings.com/tank_readings_api?DriverManagerId=1&DriverManagerPassword=123";
+
+
+    
 const mqttServ = "aee36ff0c4064c9eac7c51c2c492629e.s1.eu.hivemq.cloud";
 const mqttSoc = "8884";
