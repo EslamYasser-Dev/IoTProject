@@ -1,25 +1,18 @@
 import 'package:get/get.dart';
 import 'package:tanks/constants.dart';
-import 'package:tanks/repos/tankRepo.dart';
 import 'package:tanks/screens/main/login.dart';
 import 'package:tanks/screens/main/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tanks/web_services/mot.dart';
-
-import 'controllers/tanksController.dart';
-import 'cubit/tank_cubit.dart';
 
 void main() {
-  Get.put(TankController(TankRepo(MotWebServices())));
+ 
   runApp(MyApp());
   
 }
 
 // ignore: must_be_immutable
 class MyApp extends StatelessWidget {
-  late TankCubit tankCubit;
-  late TankRepo tankRepo;
 
   MyApp({super.key});
 

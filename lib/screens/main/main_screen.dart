@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import '../../models/TanksData_Model.dart';
 import 'components/side_menu.dart';
 
+// ignore: must_be_immutable
 class MainScreen extends StatelessWidget {
 
 

@@ -1,16 +1,17 @@
 import 'package:get/get.dart';
 import 'package:tanks/models/TanksData_Model.dart';
-import '../repos/tankRepo.dart';
+import '../repos/ApiService.dart';
 
 class TankController extends GetxController {
-  final TankRepo tanksRepo;
-  var tanks = <Tank>[].obs;
+  
+  final ApiService _apiService = ApiService();
+  final tanks = <Tank>[].obs;
+  final isLoading = false.obs;
 
-  TankController(this.tanksRepo);
-
-  void getAllTanksFromMot() {
-    tanksRepo.getAllTanksFromMot().then((tanks) {
-      this.tanks.value = tanks;
-    });
+  void fetchTanks() async {
+    isLoading.value = true;
+    final result = await _apiService.fetchTanks();
+    tanks.value = result;
+    isLoading.value = false;
   }
 }

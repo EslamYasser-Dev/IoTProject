@@ -1,16 +1,15 @@
-
 //History
 class Tank {
   int? id;
-  String? timeStamp;
-  String? captureTime;
-  String? phoneVersion;
-  String? appVersion;
-  String? currentLuxValue;
-  String? liter;
-  String? prcentage;
-  String? temp;
-  String? press;
+  String? timeStamp,
+      captureTime,
+      phoneVersion,
+      appVersion,
+      currentLuxValue,
+      liter,
+      prcentage,
+      temp,
+      press;
 
   Tank(
       {this.id,

@@ -83,6 +83,7 @@ class _RealTimeTankStatState extends State<RealTimeTankStat> {
     );
   }
 }
+// ignore: must_be_immutable
 class ProgressLine extends StatelessWidget {
   ProgressLine({
     Key? key,

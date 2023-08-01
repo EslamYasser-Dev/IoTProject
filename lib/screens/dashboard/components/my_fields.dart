@@ -1,20 +1,16 @@
+import 'package:get/get.dart';
 import 'package:tanks/models/TotalSummaryModel.dart';
 import 'package:tanks/responsive.dart';
 import 'package:flutter/material.dart';
 import '../../../constants.dart';
-import '../../../repos/tankRepo.dart';
 import 'Tank_info_card.dart';
 import 'package:tanks/controllers/tanksController.dart';
 
-// ignore: camel_case_types
+// ignore: camel_case_types, must_be_immutable
 class My_Fields extends StatelessWidget {
-
-
   My_Fields({super.key});
 
-
-
-  late TankRepo tankRepo;
+  final tankController = Get.find<TankController>();
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +32,7 @@ class My_Fields extends StatelessWidget {
                       defaultPadding / (Responsive.isMobile(context) ? 2 : 1),
                 ),
               ),
-              onPressed: (){},
+              onPressed: () => {},
               icon: const Icon(Icons.refresh),
               label: const Text("Refresh"),
             ),
@@ -46,9 +42,10 @@ class My_Fields extends StatelessWidget {
         Responsive(
           mobile: TankInfoCardGridView(
             crossAxisCount: _size.width < 650 ? 2 : 4,
-            childAspectRatio: _size.width < 650 && _size.width > 350 ? 1.3 : 1,
+            childAspectRatio:
+                _size.width < 650 && _size.width > 350 ? 1.3 : 1,
           ),
-          tablet:const TankInfoCardGridView(),
+          tablet: const TankInfoCardGridView(),
           desktop: TankInfoCardGridView(
             childAspectRatio: _size.width < 1400 ? 1.1 : 1.4,
           ),
@@ -57,6 +54,7 @@ class My_Fields extends StatelessWidget {
     );
   }
 }
+
 
 class TankInfoCardGridView extends StatelessWidget {
   const TankInfoCardGridView({
