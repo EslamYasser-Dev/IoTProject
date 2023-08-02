@@ -6,7 +6,6 @@ import '../../../controllers/tanksController.dart';
 import 'Tank_info_card.dart';
 
 class TotalSummary extends StatelessWidget {
-    final TankController _controller = Get.put(TankController());
 
    TotalSummary({
     Key? key,

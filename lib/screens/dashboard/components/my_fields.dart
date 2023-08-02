@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 import 'package:tanks/responsive.dart';
 import 'package:flutter/material.dart';
 import '../../../constants.dart';
-import '../../../models/TanksData_Model.dart';
 import 'Tank_info_card.dart';
 import 'package:tanks/controllers/tanksController.dart';
 
