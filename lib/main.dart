@@ -1,11 +1,13 @@
 import 'package:get/get.dart';
 import 'package:tanks/constants.dart';
+import 'package:tanks/controllers/tanksController.dart';
 import 'package:tanks/screens/main/login.dart';
 import 'package:tanks/screens/main/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
+ Get.put(TankController());
  
   runApp(MyApp());
   

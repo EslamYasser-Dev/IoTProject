@@ -13,5 +13,10 @@ class TankController extends GetxController {
     final result = await _apiService.fetchTanks();
     tanks.value = result;
     isLoading.value = false;
+              update();
+
   }
+
+
+
 }

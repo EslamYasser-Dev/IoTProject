@@ -1,11 +1,14 @@
+import 'package:get/get.dart';
 import 'package:tanks/responsive.dart';
 import 'package:flutter/material.dart';
-import 'package:tanks/models/TotalSummaryModel.dart';
 import '../../../constants.dart';
+import '../../../controllers/tanksController.dart';
 import 'Tank_info_card.dart';
 
 class TotalSummary extends StatelessWidget {
-  const TotalSummary({
+    final TankController _controller = Get.put(TankController());
+
+   TotalSummary({
     Key? key,
   }) : super(key: key);
 
@@ -18,7 +21,7 @@ class TotalSummary extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "My Files",
+              "Tank Status",
               style: Theme.of(context).textTheme.titleMedium,
             ),
             ElevatedButton.icon(
@@ -41,7 +44,7 @@ class TotalSummary extends StatelessWidget {
             crossAxisCount: _size.width < 650 ? 2 : 4,
             childAspectRatio: _size.width < 650 ? 1.3 : 1,
           ),
-          tablet:const FileInfoCardGridView(),
+          tablet: FileInfoCardGridView(),
           desktop: FileInfoCardGridView(
             childAspectRatio: _size.width < 1400 ? 1.1 : 1.4,
           ),
@@ -52,7 +55,9 @@ class TotalSummary extends StatelessWidget {
 }
 
 class FileInfoCardGridView extends StatelessWidget {
-  const FileInfoCardGridView({
+      final TankController _controller = Get.put(TankController());
+
+   FileInfoCardGridView({
     Key? key,
     this.crossAxisCount = 4,
     this.childAspectRatio = 1,
@@ -63,17 +68,22 @@ class FileInfoCardGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      physics: const NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      itemCount: summarys.length,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: crossAxisCount,
-        crossAxisSpacing: defaultPadding,
-        mainAxisSpacing: defaultPadding,
-        childAspectRatio: childAspectRatio,
+    return Obx(
+      () => _controller.isLoading.value
+          ? Center(child: CircularProgressIndicator())
+          : GridView.builder(
+        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        itemCount:  _controller.tanks.length,
+                        
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: crossAxisCount,
+          crossAxisSpacing: defaultPadding,
+          mainAxisSpacing: defaultPadding,
+          childAspectRatio: childAspectRatio,
+        ),
+        itemBuilder: (context, index) => RealTimeTankStat(i:index),
       ),
-      itemBuilder: (context, index) => RealTimeTankStat(info: summarys[index]),
     );
   }
 }
