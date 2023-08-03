@@ -6,7 +6,6 @@ import 'package:tanks/screens/main/login.dart';
 import '../../../constants.dart';
 import '../../../controllers/MenuAppController.dart';
 
-import '../../../controllers/loginController.dart';
 
 class Header extends StatelessWidget {
 
@@ -62,24 +61,22 @@ class ProfileCard extends StatelessWidget {
       child: Row(
         children: [
           if (!Responsive.isMobile(context)) Icon(Icons.security_sharp),
-          GetBuilder<loginController>(
-            init: loginController(),
-            builder: (controller) {
-              return Padding(
+          
+               Padding(
                 padding: EdgeInsets.symmetric(horizontal: defaultPadding / 2),
                 
                 child:const Text("LogOut"), //API name
-              );
-            },
-          ),
+              )
+            
+          ,
           IconButton(
               icon: Icon(
                 Icons.login_outlined,
-                size: 25,
+                size: 25
               ),
               color: Colors.blueAccent,
               onPressed: () {
-                loginController().isLoggedIN = false;
+                // loginController().isLoggedIN = false;
                 Get.offAll(LoginScreen());
               }), //user
         ],

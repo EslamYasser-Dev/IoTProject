@@ -8,10 +8,6 @@ const SideMenuIconsColor = Color.fromARGB(232, 226, 226, 226);
 
 const colors = <Color>[Color(0xFFFDFBFB), Color(0xFFEBEDEE)];
 
-
-
-
-
 LinearGradient gradient = LinearGradient(
     begin: Alignment.topRight, end: Alignment.center, colors: colors);
 //Design Constans
@@ -40,7 +36,13 @@ conditonalShadow(e) => {
 const baseURL =
     "https://beta.masterofthings.com/tank_readings_api?DriverManagerId=1&DriverManagerPassword=123";
 
+const loginURL = "https://beta.masterofthings.com";
 
-    
+
+    // Mqtt
 const mqttServ = "aee36ff0c4064c9eac7c51c2c492629e.s1.eu.hivemq.cloud";
 const mqttSoc = "8884";
+const mqttTopic ="";
+const MqttTempratureTopic = "";
+
+
