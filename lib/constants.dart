@@ -33,10 +33,9 @@ conditonalShadow(e) => {
     };
 
 // connection constants
-const baseURL =
-    "https://beta.masterofthings.com/tank_readings_api?DriverManagerId=1&DriverManagerPassword=123";
-
-const loginURL = "https://beta.masterofthings.com";
+const baseURL ="https://beta.masterofthings.com/tank_readings_api?DriverManagerId=1&DriverManagerPassword=123";
+const loginURL = "https://beta.masterofthings.com/FactoryLogin";
+  late final  String sensor_id;
 
 
     // Mqtt

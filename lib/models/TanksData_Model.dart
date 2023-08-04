@@ -8,7 +8,7 @@ class Tank {
       currentLuxValue,
       liter,
       prcentage,
-      temp,
+      temp,     
       press;
 
   Tank(
