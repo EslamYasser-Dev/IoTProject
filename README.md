@@ -1,30 +1,30 @@
-# tanks
-this app manages factory tanks at a time
-# IoTProject
 
-This repository contains code and resources a part of an IoT project. Using Master of things as an Aplication Enablement platform.
+# Tanks Viewer
+
+This app manages factory tanks at a time. This repository contains code and resources as part of an IoT project, using Master of Things as an Application Enablement platform.
 
 ## Devices/Sensors
 
-1. To indicates the percentage of a content of a tank used an ultrasonic sensor. 
-2. Temprature sensor.
-3. pressure senesor.
-4. PH sensor
-hint: you can use sensit, or custom embbeded devices 
+The following sensors are used in this project:
+
+1. An ultrasonic sensor to indicate the percentage of content in a tank.
+2. Temperature sensor.
+3. Pressure sensor.
+4. PH sensor.
+
+Hint: You can use Sensit or custom embedded devices.
 
 ## Wireless Technology
 
-connected these sensors to a gateway that supports WIFI (2.4 GHZ)
+The sensors are connected to a gateway that supports WIFI (2.4 GHz).
 
-## Gateways & Carrier network
+## Gateways & Carrier Network
 
-any router supports WIFI (2.4GHZ) and can connect to the internet via cable, 3G, 4G.
+Any router that supports WIFI (2.4 GHz) and can connect to the internet via cable, 3G, or 4G can be used.
 
+## AEP Platform
 
-## AEP platform
-all datacollected goes to Master Of things AEP to store and analyse handle event, do firmware updates via secure MQTTs protocols.
-all these analytics can be viewded on android devices, linux, mac OS via MOT Api. 
-
+All data collected is sent to the Master Of Things AEP for storage and analysis, handling events, and performing firmware updates via secure MQTTs protocols. All these analytics can be viewed on Android devices, Linux, and macOS via the MOT API.
 
 ## About the Project
 
@@ -37,12 +37,11 @@ To get started with this project, you will need some basic knowledge of electron
 1. Clone this repository to your local machine.
 2. Install the necessary libraries and dependencies.
 3. Follow the instructions in the project documentation to set up your hardware and run the code.
-*this for edge computing on Devices have an Android OS installed on it.
 
-* >>>> <SensorMeasurements.getPercentFromSensor()> retutns List for accelerometer sensor.
-* values are in String ------ List<String>
+For edge computing on devices with Android OS installed:
 
-* >>>> <SensorMeasurements.tankStatus()> returns Map conatins temp, humidity, pressure as keys
+- `SensorMeasurements.getPercentFromSensor()` returns a list for accelerometer sensor values in `List<String>`.
+- `SensorMeasurements.tankStatus()` returns a map containing `temp`, `humidity`, and `pressure` as keys.
 
 ## Contributing
 
