@@ -10,7 +10,7 @@ class TankController extends GetxController {
 
   void fetchTanks() async {
     isLoading.value = true;
-    final result = await _apiService.fetchTanks(factoryId);
+    final result = await _apiService.fetchTanks(sensor_id);
     tanks.value = result;
     isLoading.value = false;
               update();
