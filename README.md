@@ -1,5 +1,5 @@
 
-# Tanks Viewer
+# Tanks Monitoring
 
 This app manages factory tanks at a time. This repository contains code and resources as part of an IoT project, using Master of Things as an Application Enablement platform.
 
